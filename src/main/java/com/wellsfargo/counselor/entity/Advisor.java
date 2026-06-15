@@ -1,11 +1,11 @@
 package com.wellsfargo.counselor.entity;
-import jakarta.persistence.OneToMany;
-import java.util.List;
-import jakarta.persistence.Id;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Advisor {
@@ -33,18 +33,19 @@ public class Advisor {
     private List<Client> clients;
 
     protected Advisor() {
-
     }
 
-    public Advisor(String firstName, String lastName, String address, String phone, String email) {
+    public Advisor(String firstName, String lastName, String address,
+                   String phone, String email, List<Client> clients) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.phone = phone;
         this.email = email;
+        this.clients = clients;
     }
 
-    public Long getAdvisorId() {
+    public long getAdvisorId() {
         return advisorId;
     }
 
@@ -86,5 +87,13 @@ public class Advisor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
     }
 }
